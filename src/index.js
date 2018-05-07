@@ -12,7 +12,7 @@ const buildPost = (obj) => {
   h2.innerHTML = obj.title
   h2.addEventListener('click',() => {
     blogHere.removeChild(div)
-    axios.delete(`http://localhost:9000/data/${obj.id}`)
+    axios.delete(`https://frozen-brook-99475.herokuapp.com/data/${obj.id}`)
     .then(console.log)
     .catch(console.error)
   })
@@ -28,7 +28,7 @@ const buildPost = (obj) => {
   return div
 }
 
-axios.get('http://localhost:9000/data')
+axios.get('https://frozen-brook-99475.herokuapp.com/data')
 .then((response) => {
  response.data.data.forEach((obj) => blogHere.appendChild(buildPost(obj)))
 })
@@ -51,7 +51,7 @@ backtoBlog.addEventListener('click',() => {
 
 document.querySelector('#createPost').addEventListener('submit', (event) => {
   event.preventDefault()
-  axios.post('http://localhost:9000/data',
+  axios.post('https://frozen-brook-99475.herokuapp.com/data',
   {
     title: document.querySelector('#postTitle').value,
     pictureURL: document.querySelector('#postURL').value,
